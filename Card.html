@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>C & S</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;600&display=swap');
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body, html {
+    height: 100%;
+    overflow: hidden;
+    background: linear-gradient(135deg, #fff0f6, #ffe6ea);
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+
+  canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    pointer-events: none;
+    filter: drop-shadow(0 0 6px rgba(229, 107, 131, 0.4));
+  }
+
+  .card {
+    position: relative;
+    z-index: 1;
+    max-width: 480px;
+    background: #fff;
+    padding: 50px 40px;
+    border-radius: 25px;
+    box-shadow:
+      0 15px 25px rgba(201, 81, 106, 0.15),
+      0 8px 15px rgba(201, 81, 106, 0.12);
+    text-align: center;
+    animation: fadeInCard 1.5s ease forwards;
+    opacity: 0;
+  }
+
+  @keyframes fadeInCard {
+    to {
+      opacity: 1;
+    }
+  }
+
+  .card h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 4.2rem;
+    color: #c94f6d;
+    margin-bottom: 12px;
+    text-shadow: 1px 1px 4px rgba(201, 81, 106, 0.4);
+  }
+
+  .card h2 {
+    font-weight: 600;
+    color: #a65666;
+    font-size: 1.4rem;
+    margin-bottom: 35px;
+    letter-spacing: 1.2px;
+  }
+
+  .names {
+    font-size: 2.4rem;
+    color: #b23c59;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: 1.1px;
+    text-shadow: 1px 1px 3px rgba(178, 60, 89, 0.5);
+  }
+    .date {
+    font-size: 1.6rem;
+    color: #a65666;
+    font-weight: 600;
+    margin-bottom: 20px;
+    letter-spacing: 1.1px;
+    }
+
+  .date-day {
+    font-size: 1.2rem;
+    color: #7a4e57;
+    margin-bottom: 12px;
+  }
+
+    .venue {
+        font-size: 1.4rem;
+        color: #c94f6d;
+        font-weight: 600;
+        margin-bottom: 10px;
+        letter-spacing: 1px;
+    }
+
+  .location {
+    font-size: 1.05rem;
+    color: #7a4e57;
+    margin-bottom: 35px;
+  }
+
+  .footer {
+    font-size: 1rem;
+    color: #c47883;
+    font-style: italic;
+    letter-spacing: 0.6px;
+  }
+
+</style>
+
+</head>
+<body>
+
+<div class="card">
+  <h1>You're Invited</h1>
+  <h2>To the Wedding of</h2>
+  <div class="names">Chetna & Sanket</div>
+  <div class="date">Date</div>
+  <div class="date-day">Friday, 6th June 2025</div>
+  <div class="venue">Venue</div>
+  <div class="location">Rajyog Celebration, Near Toll Plaza, Karanja(Gha), India</div>
+  <div class="footer">We look forward to celebrating with you 💖</div>
+</div>
+
+<canvas id="petalCanvas"></canvas>
+
+<script>
+  const canvas = document.getElementById('petalCanvas');
+  const ctx = canvas.getContext('2d');
+
+  let width, height;
+  function setSize() {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+  }
+  setSize();
+  window.addEventListener('resize', setSize);
+
+  // Flower petal class
+  class Petal {
+    constructor() {
+      this.x = Math.random() * width;
+      this.y = Math.random() * -height;
+      this.size = 10 + Math.random() * 10;
+      this.speed = 1 + Math.random() * 1.5;
+      this.angle = Math.random() * 2 * Math.PI;
+      this.angleSpeed = 0.01 + Math.random() * 0.02;
+      this.opacity = 0.7 + Math.random() * 0.3;
+      this.color = `rgba(229, 107, 131, ${this.opacity})`;
+    }
+
+    update() {
+      this.y += this.speed;
+      this.angle += this.angleSpeed;
+      if (this.y > height + this.size) {
+        this.y = -this.size;
+        this.x = Math.random() * width;
+      }
+    }
+
+    draw(ctx) {
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.rotate(this.angle);
+
+      // Draw petal shape
+      ctx.beginPath();
+      ctx.fillStyle = this.color;
+      ctx.moveTo(0, 0);
+      ctx.bezierCurveTo(this.size * 0.5, -this.size * 0.5, this.size * 1, this.size * 0.3, 0, this.size);
+      ctx.bezierCurveTo(-this.size * 1, this.size * 0.3, -this.size * 0.5, -this.size * 0.5, 0, 0);
+      ctx.fill();
+
+      ctx.restore();
+    }
+  }
+
+  // Create petals
+  let petals = [];
+  const petalsCount = 60;
+  for (let i = 0; i < petalsCount; i++) {
+    petals.push(new Petal());
+  }
+
+  // Animate petals
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+    petals.forEach(petal => {
+      petal.update();
+      petal.draw(ctx);
+    });
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+</script>
+
+</body>
+</html>
