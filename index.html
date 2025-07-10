@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Appa Daily Needs - Your Everyday Essentials</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="x-icon" href="https://t3.ftcdn.net/jpg/03/34/91/70/360_F_334917052_Fhc8fvGlm7HlWRqbTkZWzgRrOZBXmRGs.jpg">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      .product-card {
+        transition: all 0.3s ease;
+      }
+      .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      }
+      .animate-gradient-x {
+        background-size: 200% 200%;
+        animation: gradient-x 6s ease infinite;
+      }
+      @keyframes gradient-x {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      .category-card:hover img {
+        transform: scale(1.05);
+      }
+      .cart-item:hover {
+        background-color: #f8f9fa;
+      }
+      input[type="number"]::-webkit-inner-spin-button,
+      input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      .dropdown:hover .dropdown-menu {
+        display: block;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-green-600 text-white shadow-lg sticky top-0 z-50">
+      <div
+        class="container mx-auto px-4 py-3 flex justify-between items-center"
+      >
+        <div class="flex items-center space-x-4">
+          <a href="#" class="text-2xl font-bold flex items-center">
+            <i class="fas fa-shopping-basket mr-2"></i> Appa Daily Needs
+          </a>
+          <div class="hidden md:flex space-x-6">
+            <a href="#" class="hover:text-green-200">Home</a>
+            <div class="dropdown relative">
+              <button class="hover:text-green-200 flex items-center">
+                Categories <i class="fas fa-chevron-down ml-1 text-xs"></i>
+              </button>
+              <div
+                class="dropdown-menu hidden absolute left-0 mt-2 w-48 bg-white text-gray-800 rounded-md shadow-lg py-1 z-50"
+              >
+                <a href="#" class="block px-4 py-2 hover:bg-green-100"
+                  >Daily Needs</a
+                >
+                <a href="#" class="block px-4 py-2 hover:bg-green-100"
+                  >Milk Products</a
+                >
+                <a href="#" class="block px-4 py-2 hover:bg-green-100"
+                  >Biscut Products</a
+                >
+                <a href="#" class="block px-4 py-2 hover:bg-green-100"
+                  >Snack Products</a
+                >
+                <a href="#" class="block px-4 py-2 hover:bg-green-100"
+                  >Ice-Cream Products</a
+                >
+              </div>
+            </div>
+            <a href="#" class="hover:text-green-200">Offers</a>
+            <a href="#" class="hover:text-green-200">About Us</a>
+          </div>
+        </div>
+        <div class="flex items-center space-x-4">
+          <div class="relative hidden md:block">
+            <input
+              type="text"
+              placeholder="Search products..."
+              class="py-1 px-4 rounded-full text-gray-800 w-64 focus:outline-none"
+            />
+            <button class="absolute right-2 top-1 text-gray-500">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+          <a href="#" class="hover:text-green-200 relative">
+            <i class="fas fa-heart text-xl"></i>
+            <span
+              class="absolute -top-1 -right-1 bg-yellow-500 text-xs text-white rounded-full h-5 w-5 flex items-center justify-center"
+              >3</span
+            >
+          </a>
+          <a href="#" class="hover:text-green-200 relative" id="cart-icon">
+            <i class="fas fa-shopping-cart text-xl"></i>
+            <span
+              class="absolute -top-1 -right-1 bg-yellow-500 text-xs text-white rounded-full h-5 w-5 flex items-center justify-center"
+              >0</span
+            >
+          </a>
+          <a href="#" class="hover:text-green-200">
+            <i class="fas fa-user text-xl"></i>
+          </a>
+          <button class="md:hidden" id="mobile-menu-button">
+            <i class="fas fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        class="md:hidden hidden bg-green-700 py-3 px-4 transition-all duration-300 ease-in-out transform"
+        id="mobile-menu"
+      >
+        <div class="mb-4">
+          <input
+            type="text"
+            placeholder="Search products..."
+            class="py-2 px-4 rounded-full text-gray-800 w-full focus:outline-none"
+          />
+        </div>
+        <a href="#" class="block py-2 hover:bg-green-600 pl-2 rounded">Home</a>
+        <a href="#" class="block py-2 hover:bg-green-600 pl-2 rounded"
+          >Categories</a
+        >
+        <a href="#" class="block py-2 hover:bg-green-600 pl-2 rounded"
+          >Offers</a
+        >
+        <a href="#" class="block py-2 hover:bg-green-600 pl-2 rounded"
+          >About Us</a
+        >
+        <a href="#" class="block py-2 hover:bg-green-600 pl-2 rounded"
+          >Account</a
+        >
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden text-white py-48">
+      <!-- Background Image -->
+      <div
+        class="absolute top-0 left-0 w-full h-full bg-cover bg-center"
+        style="
+          background-image: url('https://static.vecteezy.com/system/resources/previews/049/640/641/non_2x/a-super-shop-equipped-with-beautiful-decor-and-long-aisles-of-various-products-is-facilitated-by-market-analysis-free-photo.jpg');
+        "
+      ></div>
+
+      <div
+        class="container mx-auto px-4 relative flex flex-col md:flex-row items-center z-10"
+      >
+        <div class="md:w-1/2 mb-8 md:mb-0">
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">
+            Your Everyday Essentials Delivered
+          </h1>
+          <p class="text-xl mb-6">
+            Get all your household needs at unbeatable prices with fast,
+            contactless delivery.
+          </p>
+          <div
+            class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4"
+          >
+            <a
+              href="#"
+              class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 px-6 rounded-lg text-center transition duration-300"
+            >
+              Shop Now
+            </a>
+            <a
+              href="#"
+              class="bg-white hover:bg-gray-100 text-green-700 font-bold py-3 px-6 rounded-lg text-center transition duration-300"
+            >
+              View Offers
+            </a>
+          </div>
+        </div>
+        <!-- <div class="md:w-1/2 flex justify-center">
+            <img src="https://imgproxy.divecdn.com/gYQAkmY40ra_vp6sZgharDf2aji3tJSPXGTOdiuBAhY/g:ce/rs:fill:1200:675:1/Z3M6Ly9kaXZlc2l0ZS1zdG9yYWdlL2RpdmVpbWFnZS9DVUJfTGFrZV9TdHJlZXRfR3JvY2VyeV8yLmpwZw==.webp" alt="Happy family unpacking grocery delivery with fresh fruits and vegetables on kitchen counter" class="rounded-lg shadow-xl max-w-full h-auto">
+        </div> -->
+      </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="py-12 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">Shop by Category</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          <a
+            href="#"
+            class="category-card bg-gray-50 rounded-lg p-4 text-center hover:shadow-md transition duration-300"
+          >
+            <div
+               class="w-24 h-24 mx-auto mb-3 overflow-hidden rounded-full bg-white p-4"
+            >
+              <!-- <i class="fas fa-apple-alt text-3xl"></i> -->
+               <img
+                src="https://t3.ftcdn.net/jpg/03/34/91/70/360_F_334917052_Fhc8fvGlm7HlWRqbTkZWzgRrOZBXmRGs.jpg"
+                alt="Shampoo, soap, and other personal care products on bathroom shelf"
+                class="w-full h-full object-contain transition duration-300"
+              />
+
+            </div>
+            <h3 class="font-semibold text-gray-800">Daily Needs</h3>
+            <p class="text-xs text-gray-500 mt-1">Fresh & Organic</p>
+          </a>
+          <a
+            href="#"
+            class="category-card bg-gray-50 rounded-lg p-4 text-center hover:shadow-md transition duration-300"
+          >
+            <div
+              class="w-24 h-24 mx-auto mb-3 overflow-hidden rounded-full bg-white p-4"
+            >
+              <img
+                src="https://images.scalebranding.com/2501047b-fc55-418b-b6cc-bf6743ed18a6.png"
+                alt="Shampoo, soap, and other personal care products on bathroom shelf"
+                class="w-full h-full object-contain transition duration-300"
+              />
+            </div>
+            <h3 class="font-semibold">Milk Products</h3>
+          </a>
+          <a
+            href="#"
+            class="category-card bg-gray-50 rounded-lg p-4 text-center hover:shadow-md transition duration-300"
+          >
+            <div
+              class="w-24 h-24 mx-auto mb-3 overflow-hidden rounded-full bg-white p-4"
+            >
+              <img
+                src="https://img.freepik.com/premium-vector/biscuit-cookies-logo-with-smile-expression_612390-131.jpg"
+                alt="Cleaning supplies including sprays, brushes and gloves"
+                class="w-full h-full object-contain transition duration-300"
+              />
+            </div>
+            <h3 class="font-semibold">Biscut Products</h3>
+          </a>
+          <a
+            href="#"
+            class="category-card bg-gray-50 rounded-lg p-4 text-center hover:shadow-md transition duration-300"
+          >
+            <div
+              class="w-24 h-24 mx-auto mb-3 overflow-hidden rounded-full bg-white p-4"
+            >
+              <img
+                src="https://png.pngtree.com/png-clipart/20240814/original/pngtree-fries-in-cartoon-style-png-image_15769757.png"
+                alt="Baby products including diapers, bottles and toys"
+                class="w-full h-full object-contain transition duration-300"
+              />
+            </div>
+            <h3 class="font-semibold">Snack Products</h3>
+          </a>
+          <a
+            href="#"
+            class="category-card bg-gray-50 rounded-lg p-4 text-center hover:shadow-md transition duration-300"
+          >
+            <div
+              class="w-24 h-24 mx-auto mb-3 overflow-hidden rounded-full bg-white p-4"
+            >
+              <img
+                src="https://images-platform.99static.com//7yKVBVmt60QJOsZtRgPJ8SSGMHY=/132x125:1342x1335/fit-in/500x500/99designs-contests-attachments/118/118752/attachment_118752156"
+                alt="Pet food and accessories for dogs and cats"
+                class="w-full h-full object-contain transition duration-300"
+              />
+            </div>
+            <h3 class="font-semibold">Ice-Cream Products</h3>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="py-12 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center mb-8">
+          <h2 class="text-3xl font-bold">Featured Products</h2>
+          <a href="#" class="text-green-600 hover:text-green-800 font-semibold"
+            >View All</a
+          >
+        </div>
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+        >
+          <!-- Product 1 -->
+          <div
+            class="product-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300"
+          >
+            <div class="relative">
+              <img
+                src="https://img500.exportersindia.com/product_images/bc-500/2022/4/8562637/fresh-paneer-1648808289-6267480.jpeg"
+                alt="Organic bananas bunch with green leaves on yellow background"
+                class="w-full h-48 object-cover"
+              />
+              <div
+                class="absolute top-2 right-2 bg-yellow-500 text-white text-xs font-bold px-2 py-1 rounded"
+              >
+                SALE
+              </div>
+            </div>
+            <div class="p-4">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h3 class="font-bold text-lg mb-1">Pure & Fresh Paneer</h3>
+                  <p class="text-gray-600 text-sm">Premium Quality</p>
+                </div>
+                <div class="text-right">
+                  <span class="text-green-600 font-bold">₹399.99</span>
+                  <span class="block text-xs text-gray-500 line-through"
+                    >₹599.99</span
+                  >
+                </div>
+              </div>
+              <div class="mt-4 flex items-center justify-between">
+                <div class="flex items-center">
+                  <i class="fas fa-star text-yellow-400"></i>
+                  <span class="ml-1 text-gray-600">4.9</span>
+                </div>
+                <button
+                  class="bg-green-600 hover:bg-green-700 text-white text-sm py-2 px-4 rounded-full transition duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+                >
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 2 -->
+          <div
+            class="product-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300"
+          >
+            <div class="relative">
+              <img
+                src="https://5.imimg.com/data5/BO/TV/MY-21826114/dinshaws_aahar-milk-pouch_group-shot-_singal-500x500.jpg"
+                alt="Hand soap bottle with pump dispenser and lemon scent label on marble background"
+                class="w-full h-48 object-cover"
+              />
+            </div>
+            <div class="p-4">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h3 class="font-bold text-lg mb-1">Dinshaws aahar milk</h3>
+                  <p class="text-gray-600 text-sm">500ml</p>
+                </div>
+                <div>
+                  <span class="text-green-600 font-bold">₹29.99</span>
+                  <span class="block text-xs text-gray-500 line-through"
+                    >₹49.99</span
+                  >
+                </div>
+              </div>
+              <div class="mt-4 flex items-center justify-between">
+                <div class="flex items-center">
+                  <i class="fas fa-star text-yellow-400"></i>
+                  <span class="ml-1 text-gray-600">4.5</span>
+                </div>
+                <button
+                  class="bg-green-600 hover:bg-green-700 text-white text-sm py-1 px-3 rounded-full transition duration-300"
+                >
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 3 -->
+          <div
+            class="product-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300"
+          >
+            <div class="relative">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSD9iiTtdaRvBffO30z1mSIlFbsWPB4i1JrQQ&s"
+                alt="Six-pack of organic free-range eggs in cardboard carton on wooden table"
+                class="w-full h-48 object-cover"
+              />
+            </div>
+            <div class="p-4">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h3 class="font-bold text-lg mb-1">Haldiram Milk</h3>
+                  <p class="text-gray-600 text-sm">500ml</p>
+                </div>
+                <div>
+                  <span class="text-green-600 font-bold">₹29.99</span>
+                  <span class="block text-xs text-gray-500 line-through"
+                    >₹49.99</span
+                  >
+                </div>
+              </div>
+              <div class="mt-4 flex items-center justify-between">
+                <div class="flex items-center">
+                  <i class="fas fa-star text-yellow-400"></i>
+                  <span class="ml-1 text-gray-600">4.7</span>
+                </div>
+                <button
+                  class="bg-green-600 hover:bg-green-700 text-white text-sm py-1 px-3 rounded-full transition duration-300"
+                >
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 4 -->
+          <div
+            class="product-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300"
+          >
+            <div class="relative">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcPFIeID_xd4rQQd_qraR2oZiiPsTRqwPQqA&s"
+                alt="Multipurpose cleaning spray bottle with natural ingredients label on kitchen counter"
+                class="w-full h-48 object-cover"
+              />
+              <div
+                class="absolute top-2 right-2 bg-yellow-500 text-white text-xs font-bold px-2 py-1 rounded"
+              >
+                NEW
+              </div>
+            </div>
+            <div class="p-4">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h3 class="font-bold text-lg mb-1">Haldiram Shrikhand</h3>
+                  <p class="text-gray-600 text-sm">All-Purpose</p>
+                </div>
+                <div>
+                  <span class="text-green-600 font-bold">$4.99</span>
+                </div>
+              </div>
+              <div class="mt-4 flex items-center justify-between">
+                <div class="flex items-center">
+                  <i class="fas fa-star text-yellow-400"></i>
+                  <span class="ml-1 text-gray-600">4.8</span>
+                </div>
+                <button
+                  class="bg-green-600 hover:bg-green-700 text-white text-sm py-1 px-3 rounded-full transition duration-300"
+                >
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            class="product-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300"
+          >
+            <div class="relative">
+              <img
+                src="https://www.jiomart.com/images/product/original/491638839/dinshaw-s-dahi-500-g-pouch-product-images-o491638839-p590332594-0-202203170229.jpg?im=Resize=(1000,1000)"
+                alt="Multipurpose cleaning spray bottle with natural ingredients label on kitchen counter"
+                class="w-full h-48 object-cover"
+              />
+              <div
+                class="absolute top-2 right-2 bg-yellow-500 text-white text-xs font-bold px-2 py-1 rounded"
+              >
+                NEW
+              </div>
+            </div>
+            <div class="p-4">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h3 class="font-bold text-lg mb-1">Eco Cleaner</h3>
+                  <p class="text-gray-600 text-sm">All-Purpose</p>
+                </div>
+                <div>
+                  <span class="text-green-600 font-bold">$4.99</span>
+                </div>
+              </div>
+              <div class="mt-4 flex items-center justify-between">
+                <div class="flex items-center">
+                  <i class="fas fa-star text-yellow-400"></i>
+                  <span class="ml-1 text-gray-600">4.8</span>
+                </div>
+                <button
+                  class="bg-green-600 hover:bg-green-700 text-white text-sm py-1 px-3 rounded-full transition duration-300"
+                >
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            class="product-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300"
+          >
+            <div class="relative">
+              <img
+                src="https://cdn.grofers.com/app/images/products/sliding_image/519332a.jpg"
+                alt="Multipurpose cleaning spray bottle with natural ingredients label on kitchen counter"
+                class="w-full h-48 object-cover"
+              />
+              <div
+                class="absolute top-2 right-2 bg-yellow-500 text-white text-xs font-bold px-2 py-1 rounded"
+              >
+                NEW
+              </div>
+            </div>
+            <div class="p-4">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h3 class="font-bold text-lg mb-1">Eco Cleaner</h3>
+                  <p class="text-gray-600 text-sm">All-Purpose</p>
+                </div>
+                <div>
+                  <span class="text-green-600 font-bold">$4.99</span>
+                </div>
+              </div>
+              <div class="mt-4 flex items-center justify-between">
+                <div class="flex items-center">
+                  <i class="fas fa-star text-yellow-400"></i>
+                  <span class="ml-1 text-gray-600">4.8</span>
+                </div>
+                <button
+                  class="bg-green-600 hover:bg-green-700 text-white text-sm py-1 px-3 rounded-full transition duration-300"
+                >
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            class="product-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300"
+          >
+            <div class="relative">
+              <img
+                src="https://tiimg.tistatic.com/fp/1/007/591/haldiram-s-rasgulla-made-from-cow-s-milk-pure-fresh-delicious-taste-486.jpg"
+                alt="Multipurpose cleaning spray bottle with natural ingredients label on kitchen counter"
+                class="w-full h-48 object-cover"
+              />
+              <div
+                class="absolute top-2 right-2 bg-yellow-500 text-white text-xs font-bold px-2 py-1 rounded"
+              >
+                NEW
+              </div>
+            </div>
+            <div class="p-4">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h3 class="font-bold text-lg mb-1">Eco Cleaner</h3>
+                  <p class="text-gray-600 text-sm">All-Purpose</p>
+                </div>
+                <div>
+                  <span class="text-green-600 font-bold">$4.99</span>
+                </div>
+              </div>
+              <div class="mt-4 flex items-center justify-between">
+                <div class="flex items-center">
+                  <i class="fas fa-star text-yellow-400"></i>
+                  <span class="ml-1 text-gray-600">4.8</span>
+                </div>
+                <button
+                  class="bg-green-600 hover:bg-green-700 text-white text-sm py-1 px-3 rounded-full transition duration-300"
+                >
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            class="product-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300"
+          >
+            <div class="relative">
+              <img
+                src="https://www.haldirams.com/media/catalog/product/cache/71134970afb779eb7860339989626b7e/m/i/mini_gulab_jamun.jpeg"
+                alt="Multipurpose cleaning spray bottle with natural ingredients label on kitchen counter"
+                class="w-full h-48 object-cover"
+              />
+              <div
+                class="absolute top-2 right-2 bg-yellow-500 text-white text-xs font-bold px-2 py-1 rounded"
+              >
+                NEW
+              </div>
+            </div>
+            <div class="p-4">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h3 class="font-bold text-lg mb-1">Eco Cleaner</h3>
+                  <p class="text-gray-600 text-sm">All-Purpose</p>
+                </div>
+                <div>
+                  <span class="text-green-600 font-bold">$4.99</span>
+                </div>
+              </div>
+              <div class="mt-4 flex items-center justify-between">
+                <div class="flex items-center">
+                  <i class="fas fa-star text-yellow-400"></i>
+                  <span class="ml-1 text-gray-600">4.8</span>
+                </div>
+                <button
+                  class="bg-green-600 hover:bg-green-700 text-white text-sm py-1 px-3 rounded-full transition duration-300"
+                >
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Special Offers -->
+    <section class="py-12 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center mb-8">
+          <h2 class="text-3xl font-bold text-gray-800">Special Offers</h2>
+          <a href="#" class="text-green-600 hover:text-green-800 font-semibold"
+            >View All</a
+          >
+        </div>
+        <div
+          class="bg-green-50 rounded-xl p-6 md:p-8 flex flex-col md:flex-row items-center shadow-lg"
+        >
+          <div class="md:w-1/2 mb-6 md:mb-0">
+            <h3 class="text-2xl font-semibold mb-3 text-gray-800">
+              Paneer & Milk Essentials Bundle
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Shop fresh milk and paneer at unbeatable prices, now with a 25%
+              discount!
+            </p>
+            <div class="flex items-center mb-4">
+              <span class="text-2xl font-bold text-green-600 mr-2">$24.99</span>
+              <span class="text-gray-500 line-through">$32.99</span>
+              <span
+                class="ml-2 bg-red-100 text-red-800 text-xs font-semibold px-2 py-1 rounded"
+                >Save 25%</span
+              >
+            </div>
+            <button
+              class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-lg transition duration-300"
+            >
+              Add to Cart
+            </button>
+          </div>
+          <div class="md:w-1/2 flex justify-center">
+            <img
+              src="https://i0.wp.com/www.kabilaifarm.com/wp-content/uploads/2023/06/Understanding-the-Different-Types-of-Dairy-Products.jpg"
+              alt="Fresh paneer cubes and milk products in a beautiful arrangement"
+             class="rounded-lg shadow-xl max-w-full h-auto transform transition duration-300 hover:scale-105 hover:shadow-2xl"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+ <!-- Why Choose Us -->
+<section class="py-12 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-12">
+      Why Choose Appa Daily Needs
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Card 1: Fast Delivery -->
+      <div class="text-center transform transition duration-300 hover:scale-105 hover:shadow-lg p-6 rounded-lg bg-white">
+        <div
+          class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 transition duration-300 transform hover:scale-125 hover:bg-green-200"
+        >
+          <i class="fas fa-truck text-2xl text-green-600"></i>
+        </div>
+        <h3 class="font-bold text-lg mb-2">Fast Delivery</h3>
+        <p class="text-gray-600">Same day delivery for orders before 2pm</p>
+      </div>
+      
+      <!-- Card 2: Best Prices -->
+      <div class="text-center transform transition duration-300 hover:scale-105 hover:shadow-lg p-6 rounded-lg bg-white">
+        <div
+          class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 transition duration-300 transform hover:scale-125 hover:bg-green-200"
+        >
+          <i class="fas fa-hand-holding-usd text-2xl text-green-600"></i>
+        </div>
+        <h3 class="font-bold text-lg mb-2">Best Prices</h3>
+        <p class="text-gray-600">Competitive pricing with regular discounts</p>
+      </div>
+
+      <!-- Card 3: Quality Products -->
+      <div class="text-center transform transition duration-300 hover:scale-105 hover:shadow-lg p-6 rounded-lg bg-white">
+        <div
+          class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 transition duration-300 transform hover:scale-125 hover:bg-green-200"
+        >
+          <i class="fas fa-leaf text-2xl text-green-600"></i>
+        </div>
+        <h3 class="font-bold text-lg mb-2">Quality Products</h3>
+        <p class="text-gray-600">Carefully selected for quality and freshness</p>
+      </div>
+
+      <!-- Card 4: 24/7 Support -->
+      <div class="text-center transform transition duration-300 hover:scale-105 hover:shadow-lg p-6 rounded-lg bg-white">
+        <div
+          class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 transition duration-300 transform hover:scale-125 hover:bg-green-200"
+        >
+          <i class="fas fa-headset text-2xl text-green-600"></i>
+        </div>
+        <h3 class="font-bold text-lg mb-2">24/7 Support</h3>
+        <p class="text-gray-600">Dedicated customer service anytime</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <!-- Newsletter -->
+    <section class="py-12 bg-green-600 text-white">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold mb-4">Subscribe to Our Newsletter</h2>
+        <p class="text-lg mb-6 max-w-2xl mx-auto">
+          Get the latest updates on new products and special offers delivered
+          straight to your inbox.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center max-w-md mx-auto">
+          <input
+            type="email"
+            placeholder="Your email address"
+            class="py-3 px-4 rounded-l-full sm:rounded-r-none rounded-r-full sm:w-2/3 text-gray-900 focus:outline-none"
+          />
+          <button
+            class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 px-6 sm:rounded-r-full rounded-l-full sm:rounded-l-none mt-2 sm:mt-0 transition duration-300"
+          >
+            Subscribe
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Categories Showcase -->
+    <section class="py-12 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">
+          Shop Our Top Categories
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="relative rounded-xl overflow-hidden group">
+            <img
+              src="https://cu-website-cms-prd.s3.us-east-1.amazonaws.com/large_How_Long_Does_Dairy_Stay_in_Your_System_c44b2d2c2b.jpg"
+              alt="Variety of fresh grocery items including fruits, vegetables, and pantry staples arranged neatly"
+              class="w-full h-64 object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6"
+            >
+              <div>
+                <h3 class="text-2xl font-bold text-white">Milk Products</h3>
+                <a
+                  href="#"
+                  class="text-white hover:text-yellow-300 font-medium inline-flex items-center mt-2"
+                >
+                  Shop Now <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="relative rounded-xl overflow-hidden group">
+            <img
+              src="https://www.haldiram.com/media/.renditions/wysiwyg/homepage/Savouries_Banner_1_.jpg?auto=webp&format=pjpg&quality=85"
+              alt="Personal care products including shampoo, lotion, and dental care items on bathroom shelf"
+              class="w-full h-64 object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6"
+            >
+              <div>
+                <h3 class="text-2xl font-bold text-white">Snacks Products</h3>
+                <a
+                  href="#"
+                  class="text-white hover:text-yellow-300 font-medium inline-flex items-center mt-2"
+                >
+                  Shop Now <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="relative rounded-xl overflow-hidden group">
+            <img
+              src="https://halalhamperhouse.net/cdn/shop/products/71yFVNl83fL._AC_SL1000__1_43886823-84c9-48f3-b854-bd677766742e.jpg?v=1620734891"
+              alt="Various cleaning products including sprays, wipes, and brushes arranged in a cleaning caddy"
+              class="w-full h-64 object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6"
+            >
+              <div>
+                <h3 class="text-2xl font-bold text-white">Sweet Products</h3>
+                <a
+                  href="#"
+                  class="text-white hover:text-yellow-300 font-medium inline-flex items-center mt-2"
+                >
+                  Shop Now <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Shopping Cart Modal -->
+    <div class="fixed inset-0 bg-black/50 z-50 hidden" id="cart-modal">
+      <div
+        class="absolute right-0 top-0 bottom-0 bg-white w-full max-w-md overflow-y-auto shadow-xl"
+      >
+        <div class="p-6">
+          <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-bold">Your Cart</h2>
+            <button id="close-cart" class="text-gray-500 hover:text-gray-700">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+
+          <div class="space-y-4" id="cart-items">
+            <!-- Cart items will be added here dynamically -->
+            <p class="text-center text-gray-500" id="empty-cart-message">
+              Your cart is empty
+            </p>
+          </div>
+
+          <div
+            class="mt-8 border-t border-gray-200 pt-4 hidden"
+            id="cart-summary"
+          >
+            <div class="flex justify-between mb-2">
+              <span>Subtotal:</span>
+              <span class="font-semibold">$0.00</span>
+            </div>
+            <div class="flex justify-between mb-2">
+              <span>Delivery:</span>
+              <span class="font-semibold">Free</span>
+            </div>
+            <div class="flex justify-between text-lg font-bold mt-4">
+              <span>Total:</span>
+              <span>$0.00</span>
+            </div>
+            <button
+              class="w-full bg-green-600 hover:bg-green-700 text-white py-3 px-4 rounded-lg mt-6 transition duration-300"
+            >
+              Proceed to Checkout
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div>
+            <h3 class="text-xl font-bold mb01-4 flex items-center">
+              <i class="fas fa-shopping-basket mr-2"></i> Appa Daily Needs
+            </h3>
+            <p class="text-gray-400 mb-4">
+              Your one-stop shop for all daily essentials with fast delivery and
+              great prices.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white hover:bg-green-600 w-8 h-8 rounded-full flex items-center justify-center transition"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a
+                class="text-gray-400 hover:text-white hover:bg-green-600 w-8 h-8 rounded-full flex items-center justify-center transition"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a
+                class="text-gray-400 hover:text-white hover:bg-green-600 w-8 h-8 rounded-full flex items-center justify-center transition"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                class="text-gray-400 hover:text-white hover:bg-green-600 w-8 h-8 rounded-full flex items-center justify-center transition"
+                ><i class="fab fa-whatsapp"></i
+              ></a>
+              <a
+                class="text-gray-400 hover:text-white hover:bg-green-600 w-8 h-8 rounded-full flex items-center justify-center transition"
+                ><i class="fab fa-youtube"></i
+              ></a>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white">Home</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white">Shop</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white">About Us</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white">Contact</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white">FAQs</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold mb-4">Categories</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white">Groceries</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white"
+                  >Personal Care</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white"
+                  >Cleaning Supplies</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white">Baby Care</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white"
+                  >Pet Supplies</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold mb-4">Contact Us</h3>
+            <address class="text-gray-400 not-italic">
+              <p class="mb-2">123 Bus Stop, Bharsingi</p>
+              <p class="mb-2">Narsingi, MH 441305</p>
+              <p class="mb-2">Email: appadailyneeds@gmail.com</p>
+              <p>Phone: +91 9876543210</p>
+            </address>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400"
+        >
+          <p>
+            <span class="text-green-600">&copy; 2025 Appa Daily Needs</span>.
+            All rights reserved.
+          </p>
+          <p>
+            Developed By
+            <a
+              class="text-green-600"
+              href="https://digrasekhushal.github.io/Khushal_Digrase_Developer/"
+              >@Khushal D</a
+            >
+          </p>
+        </div>
+      </div>
+    </footer>
+    <script src="./assets/js/script.js"></script>
+  </body>
+</html>
