@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Milk Products - Appa Daily Needs</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="icon"
+      type="x-icon"
+      href="https://t3.ftcdn.net/jpg/03/34/91/70/360_F_334917052_Fhc8fvGlm7HlWRqbTkZWzgRrOZBXmRGs.jpg"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- FontAwesome for icons -->
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="bg-green-600 text-white shadow-lg sticky top-0 z-50">
+      <div
+        class="container mx-auto px-4 py-3 flex justify-between items-center"
+      >
+        <div class="flex items-center space-x-4">
+          <a href="#" class="text-2xl font-bold flex items-center">
+            <i class="fas fa-shopping-basket mr-2"></i> Appa Daily Needs
+          </a>
+          <div class="hidden md:flex space-x-6">
+            <a href="#" class="hover:text-green-200">Home</a>
+            <div class="dropdown relative">
+              <button class="hover:text-green-200 flex items-center">
+                Categories <i class="fas fa-chevron-down ml-1 text-xs"></i>
+              </button>
+              <div
+                class="dropdown-menu hidden absolute left-0 mt-2 w-48 bg-white text-gray-800 rounded-md shadow-lg py-1 z-50"
+              >
+                <a href="#" class="block px-4 py-2 hover:bg-green-100"
+                  >Daily Needs</a
+                >
+                <a href="#" class="block px-4 py-2 hover:bg-green-100"
+                  >Milk Products</a
+                >
+                <a href="#" class="block px-4 py-2 hover:bg-green-100"
+                  >Biscuit Products</a
+                >
+                <a href="#" class="block px-4 py-2 hover:bg-green-100"
+                  >Snack Products</a
+                >
+                <a href="#" class="block px-4 py-2 hover:bg-green-100"
+                  >Ice-Cream Products</a
+                >
+              </div>
+            </div>
+            <a href="#special-offers" class="hover:text-green-200">Offers</a>
+            <a href="#" class="hover:text-green-200">About Us</a>
+          </div>
+        </div>
+        <div class="flex items-center space-x-4">
+          <div class="relative hidden md:block">
+            <input
+              type="text"
+              placeholder="Search products..."
+              class="py-1 px-4 rounded-full text-gray-800 w-64 focus:outline-none"
+            />
+            <button class="absolute right-2 top-1 text-gray-500">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+          <a href="#" class="hover:text-green-200 relative" id="cart-icon">
+            <i class="fas fa-shopping-cart text-xl"></i>
+            <span
+              class="absolute -top-1 -right-1 bg-yellow-500 text-xs text-white rounded-full h-5 w-5 flex items-center justify-center"
+              >0</span
+            >
+          </a>
+          <a href="#" class="hover:text-green-200">
+            <i class="fas fa-user text-xl"></i>
+          </a>
+          <button class="md:hidden" id="mobile-menu-button">
+            <i class="fas fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        class="md:hidden hidden bg-green-700 py-3 px-4 transition-all duration-300 ease-in-out transform"
+        id="mobile-menu"
+      >
+        <div class="mb-4">
+          <input
+            type="text"
+            placeholder="Search products..."
+            class="py-2 px-4 rounded-full text-gray-800 w-full focus:outline-none"
+          />
+        </div>
+        <a href="#" class="block py-2 hover:bg-green-600 pl-2 rounded">Home</a>
+        <div
+          class="dropdown relative block py-2 hover:bg-green-600 pl-2 rounded"
+        >
+          <button class="hover:text-green-200 flex items-center">
+            Categories <i class="fas fa-chevron-down ml-1 text-xs"></i>
+          </button>
+          <div
+            class="dropdown-menu hidden absolute left-0 mt-2 w-48 bg-white text-gray-800 rounded-md shadow-lg py-1 z-50"
+          >
+            <a href="#" class="block px-4 py-2 hover:bg-green-100"
+              >Daily Needs</a
+            >
+            <a href="#" class="block px-4 py-2 hover:bg-green-100"
+              >Milk Products</a
+            >
+            <a href="#" class="block px-4 py-2 hover:bg-green-100"
+              >Biscuit Products</a
+            >
+            <a href="#" class="block px-4 py-2 hover:bg-green-100"
+              >Snack Products</a
+            >
+            <a href="#" class="block px-4 py-2 hover:bg-green-100"
+              >Ice-Cream Products</a
+            >
+          </div>
+        </div>
+        <a
+          href="#special-offers"
+          class="block py-2 hover:bg-green-600 pl-2 rounded"
+          >Offers</a
+        >
+        <a href="#" class="block py-2 hover:bg-green-600 pl-2 rounded"
+          >About Us</a
+        >
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+      <section
+  class="category-banner bg-cover bg-center relative h-64 w-full"
+  style="background-image: url('https://i.pinimg.com/736x/99/4e/33/994e338a12b4bd0a18544d5a1f46534c.jpg');"
+>
+  <div class="absolute inset-0 bg-black opacity-50"></div> <!-- Overlay for text readability -->
+  <div class="relative z-10 flex items-center justify-center h-full">
+    <div class="text-center">
+      <h1 class="text-4xl font-semibold text-white mb-4">
+        Milk Products
+      </h1>
+      <p class="text-lg text-gray-200">
+        Fresh, high-quality milk products for your daily needs!
+      </p>
+    </div>
+  </div>
+</section>
+
+
+      <!-- Product Cards Section -->
+      <section
+        class="product-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-4 py-8"
+      >
+        <!-- Product Card 1 -->
+        <div
+          class="product-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300 transform hover:scale-105 hover:shadow-xl"
+        >
+          <div class="relative">
+            <img
+              src="https://img500.exportersindia.com/product_images/bc-500/2022/4/8562637/fresh-paneer-1648808289-6267480.jpeg"
+              alt="Pure & Fresh Paneer"
+              class="w-full h-48 object-cover"
+            />
+            <div
+              class="absolute top-2 right-2 bg-yellow-500 text-white text-xs font-bold px-2 py-1 rounded"
+            >
+              SALE
+            </div>
+          </div>
+          <div class="p-4">
+            <div class="flex justify-between items-start">
+              <div>
+                <h3 class="font-bold text-lg mb-1 text-gray-800">
+                  Pure & Fresh Paneer
+                </h3>
+                <p class="text-gray-600 text-sm">Premium Quality</p>
+              </div>
+              <div class="text-right">
+                <span class="text-green-600 font-bold">₹399.99</span>
+                <span class="block text-xs text-gray-500 line-through"
+                  >₹599.99</span
+                >
+              </div>
+            </div>
+            <div class="mt-4 flex items-center justify-between">
+              <div class="flex items-center">
+                <i class="fas fa-star text-yellow-400"></i>
+                <span class="ml-1 text-gray-600">4.9</span>
+              </div>
+              <button
+                class="bg-green-600 hover:bg-green-700 text-white text-sm py-2 px-4 rounded-full transition duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Card 2 -->
+        <div
+          class="product-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300 transform hover:scale-105 hover:shadow-xl"
+        >
+          <div class="relative">
+            <img
+              src="https://img500.exportersindia.com/product_images/bc-500/2022/4/8562637/fresh-paneer-1648808289-6267480.jpeg"
+              alt="Pure & Fresh Paneer"
+              class="w-full h-48 object-cover"
+            />
+            <div
+              class="absolute top-2 right-2 bg-yellow-500 text-white text-xs font-bold px-2 py-1 rounded"
+            >
+              SALE
+            </div>
+          </div>
+          <div class="p-4">
+            <div class="flex justify-between items-start">
+              <div>
+                <h3 class="font-bold text-lg mb-1 text-gray-800">
+                  Pure & Fresh Paneer
+                </h3>
+                <p class="text-gray-600 text-sm">Premium Quality</p>
+              </div>
+              <div class="text-right">
+                <span class="text-green-600 font-bold">₹399.99</span>
+                <span class="block text-xs text-gray-500 line-through"
+                  >₹599.99</span
+                >
+              </div>
+            </div>
+            <div class="mt-4 flex items-center justify-between">
+              <div class="flex items-center">
+                <i class="fas fa-star text-yellow-400"></i>
+                <span class="ml-1 text-gray-600">4.9</span>
+              </div>
+              <button
+                class="bg-green-600 hover:bg-green-700 text-white text-sm py-2 px-4 rounded-full transition duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Card 3 -->
+        <div
+          class="product-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300 transform hover:scale-105 hover:shadow-xl"
+        >
+          <div class="relative">
+            <img
+              src="https://img500.exportersindia.com/product_images/bc-500/2022/4/8562637/fresh-paneer-1648808289-6267480.jpeg"
+              alt="Pure & Fresh Paneer"
+              class="w-full h-48 object-cover"
+            />
+            <div
+              class="absolute top-2 right-2 bg-yellow-500 text-white text-xs font-bold px-2 py-1 rounded"
+            >
+              SALE
+            </div>
+          </div>
+          <div class="p-4">
+            <div class="flex justify-between items-start">
+              <div>
+                <h3 class="font-bold text-lg mb-1 text-gray-800">
+                  Pure & Fresh Paneer
+                </h3>
+                <p class="text-gray-600 text-sm">Premium Quality</p>
+              </div>
+              <div class="text-right">
+                <span class="text-green-600 font-bold">₹399.99</span>
+                <span class="block text-xs text-gray-500 line-through"
+                  >₹599.99</span
+                >
+              </div>
+            </div>
+            <div class="mt-4 flex items-center justify-between">
+              <div class="flex items-center">
+                <i class="fas fa-star text-yellow-400"></i>
+                <span class="ml-1 text-gray-600">4.9</span>
+              </div>
+              <button
+                class="bg-green-600 hover:bg-green-700 text-white text-sm py-2 px-4 rounded-full transition duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div>
+            <h3 class="text-xl font-bold mb01-4 flex items-center">
+              <i class="fas fa-shopping-basket mr-2"></i> Appa Daily Needs
+            </h3>
+            <p class="text-gray-400 mb-4">
+              Your one-stop shop for all daily essentials with fast delivery and
+              great prices.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white hover:bg-green-600 w-8 h-8 rounded-full flex items-center justify-center transition"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a
+                class="text-gray-400 hover:text-white hover:bg-green-600 w-8 h-8 rounded-full flex items-center justify-center transition"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a
+                class="text-gray-400 hover:text-white hover:bg-green-600 w-8 h-8 rounded-full flex items-center justify-center transition"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                class="text-gray-400 hover:text-white hover:bg-green-600 w-8 h-8 rounded-full flex items-center justify-center transition"
+                ><i class="fab fa-whatsapp"></i
+              ></a>
+              <a
+                class="text-gray-400 hover:text-white hover:bg-green-600 w-8 h-8 rounded-full flex items-center justify-center transition"
+                ><i class="fab fa-youtube"></i
+              ></a>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white">Home</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white">Shop</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white">About Us</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white">Contact</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white">FAQs</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold mb-4">Categories</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white"
+                  >Daily Needs</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white"
+                  >Milk Products</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white"
+                  >Biscut Products</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white"
+                  >Snack Products</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white"
+                  >Ice-Cream Products</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold mb-4">Contact Us</h3>
+            <address class="text-gray-400 not-italic">
+              <p class="mb-2">123 Bus Stop, Bharsingi</p>
+              <p class="mb-2">Narsingi, MH 441305</p>
+              <p class="mb-2">Email: appadailyneeds@gmail.com</p>
+              <p>Phone: +91 9876543210</p>
+            </address>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400"
+        >
+          <p>
+            <span class="text-green-600">&copy; 2025 Appa Daily Needs</span>.
+            All rights reserved.
+          </p>
+          <p>
+            Developed By
+            <a
+              class="text-green-600"
+              href="https://digrasekhushal.github.io/Khushal_Digrase_Developer/"
+              >@Khushal D</a
+            >
+          </p>
+        </div>
+      </div>
+    </footer>
+    <script>
+      // Mobile Menu Toggle
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      mobileMenuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+    </script>
+  </body>
+</html>
